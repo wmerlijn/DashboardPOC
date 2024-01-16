@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif; /* Set the desired font family */
+    font-weight: bold;
+}
+
+/* Style for the sticky button */
+.sticky-button {
+    position: fixed;
+    top: 10px; /* Adjust the top value as needed */
+    right: 10px; /* Adjust the right value as needed */
+    padding: 10px;
+    background-color: #1E828F;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sticky-button:hover {
+    background-color: #14565f;
+}
+
+p {
+    color: #1E828F;
+    font-size: large;
+}
+
+label {
+    color: #1E828F;
+}
+
+h1 {   
+    color: #1E828F;
+}
+.centered-div {
+    text-align: center;
+}
+
+.svg-container {
+    display: flex;
+}
+
+.svg-image {
+    width: 100px; /* Set your desired width */
+    height: auto;
+    margin: 5px; /* Adjust margin as needed */
+}
+
+#displayValue {
+    color: white;
+}

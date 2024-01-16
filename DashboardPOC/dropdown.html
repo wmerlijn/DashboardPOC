@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard POC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="centered-div">
+        <h1>Apparaat 1</h1>
+        <label for="dropdown">Selecteer een status:</label><br/><br/>
+        <select id="dropdown" onchange="sendSelectedValue()">
+            <option value="option1">Apparaat klaar voor gebruik</option>
+            <option value="option2">Arm positioneren</option>
+            <option value="option3">Scannen</option>
+            <option value="option4">Buisjes vullen</option>
+            <option value="option5">Pleister plakken</option>
+            <option value="option6">Procedure afgerond</option>
+        </select>
+    
+        <script>
+            function sendSelectedValue() {
+                const selectedValue = document.getElementById('dropdown').value;
+                localStorage.setItem('selectedValue', selectedValue);
+            }
+        </script>
+    </div>
+</body>

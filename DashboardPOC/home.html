@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard POC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a href="dropdown.html" class="sticky-button" target="_blank">Data invoeren</a>
+    <div class="centered-div">
+        <h1>Apparaat 1</h1>
+        <p id="displayStatus">Apparaat klaar voor gebruik</p>
+    </div>
+
+    <div class="svg-container">
+        <div class="image-container">
+            <img id="status1" class="svg-image" src="Icons/icon_positionning_small.svg" alt="Stap 1">
+            <img id="status2" class="svg-image" src="Icons/icon_scanning_small.svg" alt="Stap 2">
+            <img id="status3" class="svg-image" src="Icons/icon_filling_tubes_small.svg" alt="Stap 3">
+            <img id="status4" class="svg-image" src="Icons/icon_bandage_small.svg" alt="Stap 4">
+            <img id="status5" class="svg-image" src="Icons/icon_complete_small.svg" alt="Stap 5">
+        </div>
+    </div>
+
+    <script>
+        function status1_active() {
+            var image = document.getElementById("status1");
+            image.src = "Icons/icon_active.svg"; // Set the new image sources
+        }
+
+        function status1_unActive() {
+            var image = document.getElementById("status1");
+            image.src = "Icons/icon_positionning_small.svg"; // Set the new image sources
+        }
+
+        function status2_active() {
+            var image = document.getElementById("status2");
+            image.src = "Icons/icon_active.svg"; // Set the new image sources
+        }
+
+        function status2_unActive() {
+            var image = document.getElementById("status2");
+            image.src = "Icons/icon_scanning_small.svg"; // Set the new image sources
+        }
+
+        function status3_active() {
+            var image = document.getElementById("status3");
+            image.src = "Icons/icon_active.svg"; // Set the new image sources
+        }
+
+        function status3_unActive() {
+            var image = document.getElementById("status3");
+            image.src = "Icons/icon_filling_tubes_small.svg"; // Set the new image sources
+        }
+
+        function status4_active() {
+            var image = document.getElementById("status4");
+            image.src = "Icons/icon_active.svg"; // Set the new image sources
+        }
+
+        function status4_unActive() {
+            var image = document.getElementById("status4");
+            image.src = "Icons/icon_bandage_small.svg"; // Set the new image sources
+        }
+
+        function status5_active() {
+            var image = document.getElementById("status5");
+            image.src = "Icons/icon_active.svg"; // Set the new image sources
+        }
+
+        function status5_unActive() {
+            var image = document.getElementById("status5");
+            image.src = "Icons/icon_complete_small.svg"; // Set the new image sources
+        }
+
+        function status_idle() {
+            status1_unActive();
+            status2_unActive();
+            status3_unActive();
+            status4_unActive();
+            status5_unActive();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Apparaat klaar voor gebruik';
+        }
+
+        function status1_done() {
+            status1_active();
+            status2_unActive();
+            status3_unActive();
+            status4_unActive();
+            status5_unActive();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Arm positioneren';
+        }
+
+        function status2_done() {
+            status1_active();
+            status2_active();
+            status3_unActive();
+            status4_unActive();
+            status5_unActive();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Scannen';
+        }
+
+        function status3_done() {
+            status1_active();
+            status2_active();
+            status3_active();
+            status4_unActive();
+            status5_unActive();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Buisjes vullen';
+        }
+
+        function status4_done() {
+            status1_active();
+            status2_active();
+            status3_active();
+            status4_active();
+            status5_unActive();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Pleister plakken';
+        }
+
+        function status5_done() {
+            status1_active();
+            status2_active();
+            status3_active();
+            status4_active();
+            status5_active();
+            var paragraph = document.getElementById('displayStatus');
+            paragraph.textContent = 'Procedure afgerond';
+        }
+
+        // Function to update the displayed value
+        function updateDisplayedValue(value) {
+            document.getElementById('displayValue').textContent = `Selected Value: ${value}`;
+        }
+
+        // Listen for the storage event
+        window.addEventListener('storage', function (event) {
+            if (event.key === 'selectedValue') {
+                // Retrieve the new value from localStorage and update the display
+                const newValue = localStorage.getItem('selectedValue');
+                updateDisplayedValue(newValue);
+                if (newValue == 'option1') {
+                    status_idle()
+                }
+                if (newValue == 'option2') {
+                    status1_done()
+                }
+                if (newValue == 'option3') {
+                    status2_done()
+                }
+                if (newValue == 'option4') {
+                    status3_done()
+                }
+                if (newValue == 'option5') {
+                    status4_done()
+                }
+                if (newValue == 'option6') {
+                    status5_done()
+                }
+            }
+        });
+    </script>
+    <p id="displayValue">Selected value will appear here</p>
+</body>
